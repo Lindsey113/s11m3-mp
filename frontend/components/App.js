@@ -11,22 +11,22 @@ export default function App() {
   useEffect(() => {
     fetchDogs()
   }, [])
-  
+
   const fetchDogs = () => {
     fetch('/api/dogs')
-    .then(res => {
-      if(!res.ok) {
-        throw new Error('error')
-      }
-      
-      const contentType = res.headers.get('Content-Type')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('error')
+        }
 
-      if(contentType.includes('application/json')){
-        return res.json()
-      }
-    })
-    .then(setDogs)
-    .catch(error => console.log(error))
+        const contentType = res.headers.get('Content-Type')
+
+        if (contentType.includes('application/json')) {
+          return res.json()
+        }
+      })
+      .then(setDogs)
+      .catch(error => console.log(error))
 
   }
   return (
@@ -37,15 +37,15 @@ export default function App() {
       </nav>
       <Routes>
         <Route path="/" element={<DogsList
-        dogs={dogs}
-        fetchDogs={fetchDogs}
-        setCurrentDog={setCurrentDog}
+          dogs={dogs}
+          fetchDogs={fetchDogs}
+          setCurrentDog={setCurrentDog}
         />} />
         <Route path="/form" element={<DogForm
-        dog={currentDogId && dogs.find(d => d.id == currentDogId)}
-        fetchDogs={fetchDogs}
-        reset={() => setCurrentDog(null)}
-         />} />
+          dog={currentDogId && dogs.find(d => d.id == currentDogId)}
+          fetchDogs={fetchDogs}
+          reset={() => setCurrentDog(null)}
+        />} />
       </Routes>
     </div>
   )

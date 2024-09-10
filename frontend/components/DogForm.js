@@ -31,15 +31,15 @@ export default function DogForm({ dog, reset, fetchDogs }) {
       body: JSON.stringify(values),
       headers: new Headers({ 'Content-Type': 'application/json' })
     })
-    .then(res => {
-      if(!res.ok){
-        throw new Error('Problem PUTting')
-      }
-      fetchDogs()
-      reset()
-      navigate('/')
-    })
-    .catch(error => console.log(error))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Problem PUTting')
+        }
+        fetchDogs()
+        reset()
+        navigate('/')
+      })
+      .catch(error => console.log(error))
   }
 
   const postPup = () => {
@@ -48,14 +48,14 @@ export default function DogForm({ dog, reset, fetchDogs }) {
       body: JSON.stringify(values),
       headers: new Headers({ 'Content-Type': 'application/json' })
     })
-    .then(res => {
-      if(!res.ok){
-        throw new Error('Problem POSTing')
-      }
-      fetchDogs()
-      navigate('/')
-    })
-    .catch(error => console.log(error))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Problem POSTing')
+        }
+        fetchDogs()
+        navigate('/')
+      })
+      .catch(error => console.log(error))
   }
 
   const onReset = (event) => {
